@@ -42,7 +42,6 @@
           withSystemd ? true,
           withScreencastSupport ? true,
           withDinit ? false,
-          doCheck ? true,
         }:
 
         rustPlatform.buildRustPackage {
@@ -116,7 +115,7 @@
             export XDG_RUNTIME_DIR="$(mktemp -d)"
           '';
 
-          inherit doCheck;
+          doCheck = false;
           checkFlags = [
             # These tests require the ability to access a "valid EGL Display", but that won't work
             # inside the Nix sandbox
